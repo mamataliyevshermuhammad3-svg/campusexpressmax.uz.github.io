@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Express — Savatcha</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .brand-logo {
+            display: block;
+            width: 560px;
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="logo.png"
+                 alt="Campus Express — Bir buyurtma, bir zumda!"
+                 class="brand-logo">
+
+            <a href="index.html" class="cart-button">
+                ← Bosh sahifaga
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="index.html#menu">Menyu</a>
+    </nav>
+
+    <section id="order">
+        <h2>🛒 Savatchangiz</h2>
+
+        <div id="cartItems"></div>
+
+        <form id="orderForm">
+            <h3>Buyurtmachi ma'lumotlari</h3>
+
+            <input type="text" id="firstName"
+                placeholder="Ismingiz" required>
+
+            <input type="text" id="lastName"
+                placeholder="Familiyangiz" required>
+
+            <select id="role" required>
+                <option value="">Kimligingizni tanlang</option>
+                <option>O‘quvchi</option>
+                <option>O‘qituvchi</option>
+            </select>
+
+            <select id="building" required>
+                <option value="">Binoni tanlang</option>
+                <option>A-bino</option>
+                <option>B-bino</option>
+                <option>C-bino</option>
+                <option>D-bino</option>
+                <option>E-bino</option>
+                <option>1-TTJ</option>
+                <option>2-TTJ</option>
+            </select>
+
+            <input type="number" id="floor"
+                placeholder="Qavat raqami" min="1" required>
+
+            <input type="text" id="room"
+                placeholder="Xona raqami" required>
+
+            <input type="tel" id="phone"
+                placeholder="Telefon raqamingiz" required>
+
+            <button type="submit">Buyurtmani yuborish</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Campus Express</p>
+        <p>Muallif: Mamtaliyev Shermuhammad</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

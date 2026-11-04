@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Express - Kuryer Paneli</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f7f4;
+    color: #26352d;
+}
+
+header {
+    background: linear-gradient(120deg, #176b45, #218657);
+    color: white;
+    padding: 28px 5%;
+}
+
+.header-content {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.brand-logo {
+    display: block;
+    width: 480px;
+    max-width: 100%;
+    height: auto;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 12px;
+}
+
+.header-subtitle {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    margin-top: 15px;
+}
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 25px;
+}
+
+.page-title {
+    color: #176b45;
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 14px;
+    border: 1px solid #dce5df;
+    border-radius: 9px;
+    width: 100%;
+    max-width: 400px;
+    margin: 12px 0 25px;
+    background: white;
+    font-size: 15px;
+}
+
+/* PROFILE */
+.profile {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 25px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #0000000d;
+    margin-bottom: 25px;
+    border-left: 5px solid #176b45;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #e1f3e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+.profile h2 {
+    color: #176b45;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.info-item {
+    background: #f5f9f6;
+    padding: 13px;
+    border-radius: 9px;
+    overflow-wrap: anywhere;
+}
+
+.info-item small {
+    display: block;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.info-item strong {
+    color: #26352d;
+}
+
+.verified {
+    color: #176b45;
+}
+
+/* PROFILE EDIT */
+.edit-profile {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px #0000000d;
+}
+
+.edit-profile h2 {
+    color: #176b45;
+    margin-bottom: 10px;
+}
+
+.edit-profile p {
+    color: #777;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+.edit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.edit-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.edit-field input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce5df;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.edit-field input:focus {
+    outline: none;
+    border-color: #176b45;
+}
+
+/* STATISTICS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #0000000d;
+    border-left: 5px solid #176b45;
+}
+
+.stat-card p {
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.stat-card h2 {
+    color: #176b45;
+    font-size: 30px;
+}
+
+/* ORDERS */
+.section {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px #0000000d;
+}
+
+.section h2 {
+    color: #176b45;
+    margin-bottom: 20px;
+}
+
+.order {
+    background: #fbfdfb;
+    border: 1px solid #e5eee8;
+    border-left: 5px solid #176b45;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 11px;
+}
+
+.order h3 {
+    color: #176b45;
+    margin-bottom: 14px;
+}
+
+.order p {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.order hr {
+    border: none;
+    border-top: 1px solid #e5eee8;
+    margin: 15px 0;
+}
+
+.status {
+    display: inline-block;
+    background: #e4f5e9;
+    color: #176b45;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* BUTTON */
+button {
+    padding: 12px 20px;
+    background: #176b45;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #f29b38;
+}
+
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.save-btn {
+    background: #176b45;
+    margin-top: 20px;
+    padding: 14px 25px;
+    font-weight: bold;
+}
+
+.save-btn:hover {
+    background: #218657;
+}
+
+/* EMPTY */
+.empty {
+    background: #f5f8f6;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    color: #777;
+}
+
+/* RESPONSIVE */
+@media(max-width: 700px) {
+    .profile {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-info,
+    .edit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .header-subtitle {
+        font-size: 22px;
+    }
+
+    .brand-logo {
+        width: 100%;
+    }
+}
+
+@media(max-width: 400px) {
+    .header-subtitle {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <img src="logo.png"
+             alt="Campus Express — Bir buyurtma, bir zumda!"
+             class="brand-logo">
+
+        <p class="header-subtitle">
+            Kuryer boshqaruv paneli
+        </p>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2 class="page-title">Kuryer paneli</h2>
+
+    <h3>Yetkazib beruvchini tanlang</h3>
+
+    <select id="courier">
+        <option value="">Ismingizni tanlang</option>
+        <option value="Yetkazib beruvchi 1">Yetkazib beruvchi 1</option>
+        <option value="Yetkazib beruvchi 2">Yetkazib beruvchi 2</option>
+        <option value="Yetkazib beruvchi 3">Yetkazib beruvchi 3</option>
+        <option value="Yetkazib beruvchi 4">Yetkazib beruvchi 4</option>
+        <option value="Yetkazib beruvchi 5">Yetkazib beruvchi 5</option>
+        <option value="Yetkazib beruvchi 6">Yetkazib beruvchi 6</option>
+    </select>
+
+    <div id="profileBox"></div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <p>Jami buyurtmalar</p>
+            <h2 id="totalOrders">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Yetkazilgan buyurtmalar</p>
+            <h2 id="deliveredOrders">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Jarayondagi buyurtmalar</p>
+            <h2 id="activeOrders">0</h2>
+        </div>
+
+    </div>
+
+    <div class="section">
+        <h2>📦 Mening buyurtmalarim</h2>
+        <div id="orders"></div>
+    </div>
+
+</div>
+
+<script>
+
+// KURYERLAR
+const defaultProfiles = [
+    { id: "Yetkazib beruvchi 1", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" },
+    { id: "Yetkazib beruvchi 2", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" },
+    { id: "Yetkazib beruvchi 3", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" },
+    { id: "Yetkazib beruvchi 4", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" },
+    { id: "Yetkazib beruvchi 5", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" },
+    { id: "Yetkazib beruvchi 6", firstName: "", lastName: "", phone: "", vehicle: "", passportStatus: "Tekshirilmagan" }
+];
+
+// SAQLANGAN KURYER MA'LUMOTLARINI OLISH
+function getProfiles() {
+
+    let saved = [];
+
+    try {
+        saved = JSON.parse(localStorage.getItem("courierProfiles")) || [];
+    } catch (error) {
+        saved = [];
+    }
+
+    return defaultProfiles.map(defaultProfile => {
+
+        const profile = saved.find(item =>
+            item.id === defaultProfile.id
+        );
+
+        return {
+            ...defaultProfile,
+            ...(profile || {})
+        };
+    });
+}
+
+// XAVFSIZ MATN
+function safe(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+// BUYURTMALARNI OLISH
+function getOrders() {
+
+    try {
+        return JSON.parse(localStorage.getItem("orders")) || [];
+    } catch (error) {
+        return [];
+    }
+}
+
+// TANLANGAN KURYER
+function getSelectedCourier() {
+    return document.getElementById("courier").value;
+}
+
+// KURYER PROFILINI KO'RSATISH
+function showProfile() {
+
+    const courier = getSelectedCourier();
+    const box = document.getElementById("profileBox");
+
+    if (!courier) {
+        box.innerHTML = "";
+        return;
+    }
+
+    const profiles = getProfiles();
+
+    const profile = profiles.find(item =>
+        item.id === courier
+    );
+
+    if (!profile) return;
+
+    const firstName = profile.firstName || "Ism kiritilmagan";
+    const lastName = profile.lastName || "Familiya kiritilmagan";
+    const phone = profile.phone || "Kiritilmagan";
+    const vehicle = profile.vehicle || "Kiritilmagan";
+
+    const passportStatus =
+        profile.passportStatus || "Tekshirilmagan";
+
+    let passportColor = "#856404";
+
+    if (passportStatus === "Tasdiqlangan") {
+        passportColor = "#176b45";
+    }
+
+    if (passportStatus === "Rad etilgan") {
+        passportColor = "#c0392b";
+    }
+
+    box.innerHTML = `
+        <div class="profile">
+
+            <div class="avatar">👤</div>
+
+            <div>
+
+                <h2>${safe(firstName)} ${safe(lastName)}</h2>
+
+                <div class="profile-info">
+
+                    <div class="info-item">
+                        <small>Lavozimi</small>
+                        <strong>Yetkazib beruvchi</strong>
+                    </div>
+
+                    <div class="info-item">
+                        <small>Telefon raqami</small>
+                        <strong>${safe(phone)}</strong>
+                    </div>
+
+                    <div class="info-item">
+                        <small>Transport turi</small>
+                        <strong>${safe(vehicle)}</strong>
+                    </div>
+
+                    <div class="info-item">
+                        <small>Pasport hujjati holati</small>
+                        <strong style="color:${passportColor}">
+                            ${safe(passportStatus)}
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="edit-profile">
+
+            <h2>✏️ Shaxsiy ma'lumotlarim</h2>
+
+            <p>
+                Quyidagi maydonlarni to'ldiring yoki o'zgartiring.
+                Ma'lumotlaringiz saqlanadi.
+            </p>
+
+            <div class="edit-grid">
+
+                <div class="edit-field">
+                    <label for="editFirstName">Ismingiz</label>
+                    <input
+                        type="text"
+                        id="editFirstName"
+                        placeholder="Ismingizni kiriting"
+                        value="${safe(profile.firstName)}"
+                    >
+                </div>
+
+                <div class="edit-field">
+                    <label for="editLastName">Familiyangiz</label>
+                    <input
+                        type="text"
+                        id="editLastName"
+                        placeholder="Familiyangizni kiriting"
+                        value="${safe(profile.lastName)}"
+                    >
+                </div>
+
+                <div class="edit-field">
+                    <label for="editPhone">Telefon raqamingiz</label>
+                    <input
+                        type="tel"
+                        id="editPhone"
+                        placeholder="+998 90 123 45 67"
+                        value="${safe(profile.phone)}"
+                    >
+                </div>
+
+                <div class="edit-field">
+                    <label for="editVehicle">Transport turi</label>
+                    <input
+                        type="text"
+                        id="editVehicle"
+                        placeholder="Masalan: Velosiped"
+                        value="${safe(profile.vehicle)}"
+                    >
+                </div>
+
+            </div>
+
+            <button class="save-btn" onclick="saveCourierProfile()">
+                💾 Ma'lumotlarni saqlash
+            </button>
+
+        </div>
+    `;
+}
+
+// KURYER MA'LUMOTLARINI SAQLASH
+function saveCourierProfile() {
+
+    const courier = getSelectedCourier();
+
+    if (!courier) {
+        alert("Avval kuryerni tanlang!");
+        return;
+    }
+
+    const firstName = document.getElementById("editFirstName").value.trim();
+    const lastName = document.getElementById("editLastName").value.trim();
+    const phone = document.getElementById("editPhone").value.trim();
+    const vehicle = document.getElementById("editVehicle").value.trim();
+
+    if (!firstName || !lastName || !phone || !vehicle) {
+        alert("Barcha maydonlarni to'ldiring!");
+        return;
+    }
+
+    const profiles = getProfiles();
+
+    const index = profiles.findIndex(item =>
+        item.id === courier
+    );
+
+    if (index === -1) {
+        alert("Kuryer topilmadi!");
+        return;
+    }
+
+    profiles[index] = {
+        ...profiles[index],
+        id: courier,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        vehicle: vehicle
+    };
+
+    localStorage.setItem(
+        "courierProfiles",
+        JSON.stringify(profiles)
+    );
+
+    refreshPage();
+
+    alert("Ma'lumotlaringiz muvaffaqiyatli saqlandi!");
+}
+
+// STATISTIKA
+function showStatistics() {
+
+    const courier = getSelectedCourier();
+    const orders = getOrders();
+
+    const myOrders = orders.filter(order =>
+        order.courier === courier
+    );
+
+    const delivered = myOrders.filter(order =>
+        order.status === "Yetkazib berildi" ||
+        order.status === "Yetkazildi"
+    ).length;
+
+    const active = myOrders.length - delivered;
+
+    document.getElementById("totalOrders").textContent =
+        myOrders.length;
+
+    document.getElementById("deliveredOrders").textContent =
+        delivered;
+
+    document.getElementById("activeOrders").textContent =
+        active;
+}
+
+// BUYURTMALARNI KO'RSATISH
+function showCourierOrders() {
+
+    const courier = getSelectedCourier();
+    const box = document.getElementById("orders");
+
+    box.innerHTML = "";
+
+    if (!courier) {
+        box.innerHTML =
+            '<div class="empty">Avval ismingizni tanlang.</div>';
+        return;
+    }
+
+    const orders = getOrders();
+
+    const myOrders = orders
+        .map((order, index) => ({
+            ...order,
+            originalIndex: index
+        }))
+        .filter(order => order.courier === courier);
+
+    if (myOrders.length === 0) {
+        box.innerHTML =
+            '<div class="empty">Sizga hali buyurtma biriktirilmagan.</div>';
+        return;
+    }
+
+    myOrders.forEach(order => {
+
+        const products = (order.products || []).map(item =>
+            `${safe(item.name)} — ${Number(item.price || 0).toLocaleString("uz-UZ")} so'm`
+        ).join("<br>");
+
+        const isDelivered =
+            order.status === "Yetkazib berildi" ||
+            order.status === "Yetkazildi";
+
+        box.innerHTML += `
+            <div class="order">
+
+                <h3>Buyurtma #${safe(order.id)}</h3>
+
+                <p>
+                    <b>Buyurtmachi:</b>
+                    ${safe(order.firstName)} ${safe(order.lastName)}<br>
+
+                    <b>Lavozimi:</b> ${safe(order.role)}<br>
+                    <b>Bino:</b> ${safe(order.building)}<br>
+                    <b>Qavat:</b> ${safe(order.floor)}<br>
+                    <b>Xona:</b> ${safe(order.room)}<br>
+                    <b>Telefon:</b> ${safe(order.phone)}
+                </p>
+
+                <hr>
+
+                <b>Mahsulotlar:</b><br>
+                ${products || "Mahsulotlar mavjud emas"}
+
+                <h3 style="margin-top:15px">
+                    Jami: ${Number(order.total || 0).toLocaleString("uz-UZ")} so'm
+                </h3>
+
+                <p>
+                    <b>Holati:</b>
+                    <span class="status">${safe(order.status)}</span>
+                </p>
+
+                ${
+                    !isDelivered
+                    ? `
+                        <button onclick="finishOrder(${order.originalIndex})">
+                            ✓ Buyurtmani yetkazdim
+                        </button>
+                    `
+                    : `
+                        <p style="color:#176b45;font-weight:bold">
+                            ✓ Buyurtma yetkazilgan
+                        </p>
+                    `
+                }
+
+            </div>
+        `;
+    });
+}
+
+// BUYURTMANI YETKAZILGAN DEB BELGILASH
+function finishOrder(index) {
+
+    const orders = getOrders();
+    const courier = getSelectedCourier();
+
+    if (!orders[index] || orders[index].courier !== courier) {
+        alert("Bu buyurtma sizga biriktirilmagan!");
+        return;
+    }
+
+    if (
+        orders[index].status === "Yetkazib berildi" ||
+        orders[index].status === "Yetkazildi"
+    ) {
+        alert("Bu buyurtma allaqachon yetkazilgan!");
+        return;
+    }
+
+    const tasdiq = confirm(
+        "Buyurtmani yetkazib berganingizni tasdiqlaysizmi?"
+    );
+
+    if (!tasdiq) return;
+
+    orders[index].status = "Yetkazib berildi";
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    refreshPage();
+
+    alert("Buyurtma yetkazilgan deb belgilandi!");
+}
+
+// HAMMA MA'LUMOTLARNI YANGILASH
+function refreshPage() {
+    showProfile();
+    showStatistics();
+    showCourierOrders();
+}
+
+// KURYER TANLANGANDA
+document.getElementById("courier").addEventListener(
+    "change",
+    refreshPage
+);
+
+// BOSHLANG'ICH HOLAT
+refreshPage();
+
+</script>
+
+</body>
+</html>
